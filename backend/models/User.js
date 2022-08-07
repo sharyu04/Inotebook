@@ -21,5 +21,11 @@ const UserSchema = new Schema({
     },
 });
 
-//First argument is name of the model, here we have taken it as user
-module.exports = mongoose.model('user',UserSchema)
+// //First argument is name of the model, here we have taken it as user
+// module.exports = mongoose.model('user',UserSchema)
+
+
+//To avoid repetition of same entries in the database
+User = mongoose.model('user',UserSchema);
+User.createIndexes();
+module.exports = User;
