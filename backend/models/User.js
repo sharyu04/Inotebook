@@ -25,7 +25,9 @@ const UserSchema = new Schema({
 // module.exports = mongoose.model('user',UserSchema)
 
 
-//To avoid repetition of same entries in the database
 User = mongoose.model('user',UserSchema);
-User.createIndexes();
+
+//Creating index corresponding email as email is 'unique'
+// User.createIndexes();
+
 module.exports = User;
