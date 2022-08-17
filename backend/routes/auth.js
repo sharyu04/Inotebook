@@ -15,6 +15,7 @@ router.post('/createUser',[
     body('email','Enter a valid email').isEmail(),
     body('password').isLength({ min: 5 }),
 ],async(req,res)=>{
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -25,7 +26,7 @@ router.post('/createUser',[
         //Check whether the email user already exists
         let user = await User.findOne({email : req.body.email});
         if(user){
-            return res.status(400).json({error : "User with this email already exists"})
+            return res.status(400).json({success ,error : "User with this email already exists"})
         }
         
         //Create user
@@ -44,7 +45,8 @@ router.post('/createUser',[
           }
           const authtoken = jwt.sign(data, JWT_Secret);
 
-        res.json({authtoken})  
+        success = true;
+        res.json({success, authtoken})  
     } catch (error) {
         console.log(error.message);
         res.status(500).send("Some error occured")
@@ -62,6 +64,7 @@ router.post('/login',[
     body('email','Enter a valid email').isEmail(),
     body('password','Password cannot be empty').exists(),
 ],async(req,res)=>{ 
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -86,7 +89,8 @@ router.post('/login',[
           }
           const authtoken = jwt.sign(data, JWT_Secret);
 
-        res.json({authtoken}) 
+        success = true;
+        res.json({success,authtoken}) 
 
     } catch (error) {
         console.log(error.message);
