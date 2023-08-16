@@ -2,7 +2,7 @@
 
 Inotebook is a notebook on cloud. It is a React Js project that allows users to save their notes online and gives them the facility to retrieve them irrespective of the location or the device. It includes features like registration, login, add note, delete note, edit note, etc
 
-## Website Link : https://mernappinotes.netlify.app/login
+## Website Link : [https://mernappinotes.netlify.app/login](https://mernappinotes.netlify.app/)
 
 ![login](https://user-images.githubusercontent.com/100046217/204561430-1b010644-9db0-46ef-914a-79dcedfaad5c.png)
 
